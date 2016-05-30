@@ -1,0 +1,27 @@
+language: node_js
+sudo: false
+node_js:
+  - '5.1'
+branches:
+  only:
+  - master
+notifications:
+  email:
+  - kirankumar.amruthaluri@gmail.com
+env:
+  global:
+  - BUILD_DEV: true
+install:
+  - npm install
+before_script:
+  - npm run lib-lint
+  - npm run react-lint
+script:
+  - npm run lib-build
+  - npm run lib-test
+  - npm run lib-test-coverage
+  - npm run react-build
+  - npm run react-test
+  - npm run react-test-coverage
+after_script:
+  - process.exit()

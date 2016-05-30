@@ -4,6 +4,7 @@ build
 guides/build
 .idea/
 .idea/watcherTasks.xml
+coverage/
 
 # Compiled source #
 ###################

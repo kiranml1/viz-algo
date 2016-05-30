@@ -6,12 +6,16 @@
     "lib-build": "BUILD_PRERELEASE=true webpack --config webpack.lib.prod.config.js --progress --colors",
     "lib-dev": "BUILD_DEV=true webpack --config webpack.lib.config.js --progress --colors --watch",
     "lib-lint": "eslint ./src",
-    "lib-test": "mocha --compilers js:babel-core/register --colors --watch ./tests/**/*.spec.js",
+    "lib-test": "mocha ./tests/**/*.spec.js --compilers js:babel-core/register",
+    "lib-test-coverage": "babel-node node_modules/isparta/bin/isparta cover --report text --report html node_modules/mocha/bin/_mocha -- --reporter dot ./tests/**/*.spec.js",
+    "lib-test-watch": "npm run lib-test -- --reporter min --watch",
     "react-build": "BUILD_PRERELEASE=true webpack --config webpack.guides.react.prod.config.js --progress --colors",
     "react-dev": "BUILD_DEV=true webpack-dev-server --config webpack.guides.react.config.js --progress --colors --content-base guides",
     "react-lint": "eslint ./guides/src",
-    "react-test": "jest --verbose --no-cache --watch",
-    "react-karma": "karma start karma.guides.react.config.js",
+    "react-jest": "jest --verbose --watch=all",
+    "react-test": "mocha \"__tests__/**/*.spec.js\" --require ./test-setup.js --compilers js:babel-register",
+    "react-test-coverage": "babel-node node_modules/isparta/bin/isparta cover --report text --report html node_modules/mocha/bin/_mocha -- --reporter dot ./__tests__/**/*.spec.js",
+    "react-test-watch": "npm run react-test -- --reporter min --watch",
     "react-server": "node server.js"
   },
   "jest": {
@@ -23,7 +27,8 @@
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/react/",
       "<rootDir>/node_modules/react-dom/",
-      "<rootDir>/node_modules/react-addons-test-utils/"
+      "<rootDir>/node_modules/react-addons-test-utils/",
+      "core-js"
     ]
   },
   "author": "Amruthaluri Kiran Kumar",
@@ -39,9 +44,11 @@
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.9.0",
     "chai": "^3.5.0",
     "codecov.io": "^0.1.6",
     "core-js": "^2.4.0",
+    "enzyme": "^2.3.0",
     "eslint": "^2.0.0",
     "eslint-loader": "^1.3.0",
     "eslint-plugin-react": "^5.1.1",
