@@ -17,11 +17,10 @@ before_script:
   - npm run lib-lint
   - npm run react-lint
 script:
-  - npm run lib-build
-  - npm run lib-test
+  - npm run lib-karma
   - npm run lib-test-coverage
-  - npm run react-build
-  - npm run react-test
+  - npm run react-karma
   - npm run react-test-coverage
 after_script:
+  - 'cat ./build/reports/coverage/report-lcov/lcov.info | ./node_modules/.bin/coveralls'
   - process.exit()

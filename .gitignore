@@ -2,8 +2,7 @@ lib
 build
 .idea
 guides/build
-.idea/
-coverage/
+coverage
 
 # Compiled source #
 ###################
@@ -44,7 +43,6 @@ Icon?
 ehthumbs.db
 Thumbs.db
 
-
 # Node specific #
 #################
 lib-cov
@@ -59,9 +57,3 @@ logs
 #results
 npm-debug.log
 node_modules/
-
-
-# Sublime specific #
-####################
-sftp-config*
-*.sublime-*

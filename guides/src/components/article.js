@@ -1,26 +1,23 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'
 
 export default class Article extends Component {
 
-    static propTypes = {
-        title: PropTypes.string,
-        children: PropTypes.string
-    };
+  render() {
+    return (
+      <article>
+        <header>
+          <h1>{this.props.title}</h1>
+        </header>
+        <section>
+          {this.props.children}
+        </section>
+      </article>
+    )
+  }
 
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <article>
-                <header>
-                    <h1>{this.props.title}</h1>
-                </header>
-                <section>
-                    {this.props.children}
-                </section>
-            </article>
-        );
-    }
 }
+
+Article.prototype.propTypes = {
+  title: PropTypes.string,
+  children: PropTypes.string
+};
