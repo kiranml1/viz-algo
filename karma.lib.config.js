@@ -19,6 +19,11 @@ webpacklibConfig.module.loaders = [
     }
 ];
 
+webpacklibConfig.module.postLoaders = [{
+    test: /\.(js|jsx)$/, exclude: /(node_modules|bower_components|tests)/,
+    loader: 'istanbul-instrumenter'
+}];
+
 module.exports = function (config) {
     config.set({
         // just run once by default
@@ -36,11 +41,21 @@ module.exports = function (config) {
         plugins: [
             webpack,
             'karma-mocha',
-            'karma-phantomjs-launcher'
+            'karma-phantomjs-launcher',
+            'karma-coverage',
+            'karma-spec-reporter'
         ],
         browsers: [ 'PhantomJS' ],
         // report results in this format
-        reporters: [ 'dots' ],
+        reporters: [ 'spec', 'coverage' ],
+        coverageReporter: {
+            dir: 'build/reports/coverage',
+            reporters: [
+                { type: 'html', subdir: 'report-html' },
+                { type: 'lcov', subdir: 'report-lcov' },
+                { type: 'cobertura', subdir: '.', file: 'cobertura.txt' }
+            ]
+        },
         webpack: webpacklibConfig,
         webpackServer: {
             // please don't spam the console when running in karma!
