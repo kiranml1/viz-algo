@@ -2,6 +2,7 @@ lib
 build
 .idea
 guides/build
+guides/coverage
 coverage
 
 # Compiled source #
