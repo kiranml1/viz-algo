@@ -1,6 +1,7 @@
 var webpack = require('webpack'),
     path = require('path'),
-    rootFolder = 'guides';
+    rootFolder = 'guides',
+    libFolder = 'src';
 
 console.log(__dirname + '/' + rootFolder + '/build');
 
@@ -33,12 +34,18 @@ module.exports = {
                 // Only run `.js` and `.jsx` files through Babel
                 test: /\.jsx?$/,
                 // Skip any files outside of your project's `src` directory
-                include: path.resolve(__dirname, rootFolder)
+                include: [
+                    path.resolve(__dirname, rootFolder),
+                    path.resolve(__dirname, libFolder)
+                ]
             },
             {
                 test: /\.css$/,
                 // Skip any files outside of your project's `src` directory
-                include: path.resolve(__dirname, rootFolder),
+                include: [
+                    path.resolve(__dirname, rootFolder),
+                    path.resolve(__dirname, libFolder)
+                ],
                 loader: 'style-loader!css-loader'
             }
         ]

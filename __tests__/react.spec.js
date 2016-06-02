@@ -4,9 +4,12 @@ import { shallow, mount, render } from 'enzyme';
 import TestUtils from 'react-addons-test-utils';
 import Blog from '../guides/src/components/Blog';
 
-describe("Blog Component suite", function() {
+describe("<Blog />", () => {
 
-    it("contains spec with an expectation", function() {
-        //expect(shallow(<Blog />).contains(<h1>Hello Blogging</h1>)).to.equal(true);
+    it("contains spec with an expectation", () => {
+        const wrapper = shallow(<Blog title="Guides" name="Author"/>);
+        expect(wrapper.find('header')).to.have.length(1);
+        expect(wrapper.find('h1')).to.have.length(1);
+        expect(wrapper.find('h2')).to.have.length(1);
     });
 });
