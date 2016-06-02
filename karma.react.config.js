@@ -29,7 +29,11 @@ module.exports = function(config) {
                         test: /\.json$/,
                         loader: 'json'
                     }
-                ]
+                ],
+                postLoaders : [{
+                    test: /\.(js|jsx)$/, exclude: /(node_modules|bower_components|tests)/,
+                    loader: 'istanbul-instrumenter'
+                }]
             },
             externals: {
                 'react/lib/ExecutionEnvironment': true,
@@ -45,14 +49,25 @@ module.exports = function(config) {
             'karma-jasmine',
             'karma-sourcemap-loader',
             'karma-chrome-launcher',
-            'karma-phantomjs-launcher'
+            'karma-phantomjs-launcher',
+            'karma-coverage',
+            'karma-spec-reporter'
         ],
         babelPreprocessor: {
             options: {
                 presets: ['airbnb']
             }
         },
-        reporters: ['dots'],
+        // report results in this format
+        reporters: [ 'spec', 'coverage' ],
+        coverageReporter: {
+            dir: 'guides/coverage',
+            reporters: [
+                { type: 'html', subdir: 'report-html' },
+                { type: 'lcov', subdir: 'report-lcov' },
+                { type: 'cobertura', subdir: '.', file: 'cobertura.txt' }
+            ]
+        },
         browsers: ['PhantomJS'],
         singleRun: true
     })
