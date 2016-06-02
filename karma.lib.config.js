@@ -7,7 +7,6 @@ webpacklibConfig.module.loaders = [
         // Only run `.js` and `.jsx` files through Babel
         test: /\.jsx?$/,
         exclude: /node_modules/,
-
         // Options to configure babel with
         query: {
             plugins: ['transform-runtime'],
@@ -22,8 +21,10 @@ webpacklibConfig.module.loaders = [
 
 module.exports = function (config) {
     config.set({
-        singleRun: true, //just run once by default
-        frameworks: [ 'mocha' ], //use the mocha test framework
+        // just run once by default
+        singleRun: true,
+        // use the mocha test framework
+        frameworks: [ 'mocha' ],
         files: [
             './node_modules/phantomjs-polyfill/bind-polyfill.js',
             'tests/**/*spec.js'
@@ -38,10 +39,12 @@ module.exports = function (config) {
             'karma-phantomjs-launcher'
         ],
         browsers: [ 'PhantomJS' ],
-        reporters: [ 'dots' ], //report results in this format
+        // report results in this format
+        reporters: [ 'dots' ],
         webpack: webpacklibConfig,
         webpackServer: {
-            noInfo: true //please don't spam the console when running in karma!
+            // please don't spam the console when running in karma!
+            noInfo: true
         }
     });
 };

@@ -12,9 +12,9 @@ module.exports = function(config) {
             'guides/tests/**/*.js': ['webpack', 'sourcemap']
         },
         webpack: {
-            //kind of a copy of your webpack config
+            // kind of a copy of your webpack config
             devtool: 'inline-source-map',
-            //just do inline source maps instead of the default
+            // just do inline source maps instead of the default
             module: {
                 loaders: [
                     {
@@ -27,8 +27,8 @@ module.exports = function(config) {
                     },
                     {
                         test: /\.json$/,
-                        loader: 'json',
-                    },
+                        loader: 'json'
+                    }
                 ]
             },
             externals: {
@@ -37,7 +37,7 @@ module.exports = function(config) {
             }
         },
         webpackServer: {
-            //please don't spam the console when running in karma!
+            // please don't spam the console when running in karma!
             noInfo: true
         },
         plugins: [

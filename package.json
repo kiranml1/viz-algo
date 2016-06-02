@@ -16,21 +16,8 @@
     "react-lint": "eslint ./guides/src",
     "react-karma": "karma start karma.react.config.js",
     "react-test": "mocha --opts ./guides/tests/mocha.opts ./guides/tests",
-    "react-test-coverage": "babel-node node_modules/isparta/bin/isparta cover --report text --report html node_modules/mocha/bin/_mocha -- --reporter dot ./__tests__/**/*.spec.js",
+    "react-test-coverage": "babel-node node_modules/isparta/bin/isparta cover --report text --report html node_modules/mocha/bin/_mocha -- --reporter dot ./guides/tests/**/*.spec.js",
     "react-test-watch": "npm run react-test -w"
-  },
-  "jest": {
-    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/jspm_packages"
-    ],
-    "unmockedModulePathPatterns": [
-      "<rootDir>/node_modules/react/",
-      "<rootDir>/node_modules/react-dom/",
-      "<rootDir>/node_modules/react-addons-test-utils/",
-      "core-js"
-    ]
   },
   "author": "Amruthaluri Kiran Kumar",
   "license": "MIT",
@@ -38,7 +25,6 @@
     "babel-cli": "^6.9.0",
     "babel-core": "^6.9.0",
     "babel-eslint": "^6.0.4",
-    "babel-jest": "^12.1.0",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-runtime": "^6.9.0",
     "babel-polyfill": "^6.9.0",
@@ -64,7 +50,6 @@
     "istanbul": "^0.4.3",
     "istanbul-instrumenter-loader": "^0.2.0",
     "jasmine-core": "^2.4.1",
-    "jest-cli": "^12.1.1",
     "jsdom": "^9.2.1",
     "json-loader": "^0.5.4",
     "karma": "^0.13.22",
