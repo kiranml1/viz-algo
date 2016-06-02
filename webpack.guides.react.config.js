@@ -47,6 +47,13 @@ module.exports = {
                     path.resolve(__dirname, libFolder)
                 ],
                 loader: 'style-loader!css-loader'
+            },
+            {
+                loader: 'json-loader',
+                include: [
+                    path.resolve(__dirname)
+                ],
+                test: /\.json$/
             }
         ]
     },

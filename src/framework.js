@@ -1,8 +1,9 @@
 import config from './config';
+import { version } from './../package.json';
 
 let framework = {};
 
-framework.version = config.version;
+framework.version = version;
 
 framework.getVersion = () => framework.version;
 

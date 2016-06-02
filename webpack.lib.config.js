@@ -62,6 +62,13 @@ module.exports = {
                     plugins: ['transform-runtime'],
                     presets: ['es2015', 'stage-0', 'react']
                 }
+            },
+            {
+                loader: 'json-loader',
+                include: [
+                    path.resolve(__dirname)
+                ],
+                test: /\.json$/
             }
         ]
     },

@@ -2,7 +2,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { shallow, mount, render } from 'enzyme';
 import TestUtils from 'react-addons-test-utils';
-import Blog from '../guides/src/components/Blog';
+import Blog from '../src/components/Blog';
 
 describe("<Blog />", () => {
 

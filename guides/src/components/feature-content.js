@@ -1,14 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'
 
 export default class FeatureContent extends Component {
-
-    static propTypes = {
-      children: PropTypes.object
-    };
-
-    constructor(props) {
-        super(props);
-    }
 
     getFeatureContent() {
         return 'Feature Content';
@@ -23,3 +15,7 @@ export default class FeatureContent extends Component {
         );
     }
 }
+
+FeatureContent.prototype.propTypes = {
+    children: PropTypes.object
+};
