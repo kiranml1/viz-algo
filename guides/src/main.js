@@ -8,14 +8,14 @@ import FeatureContent from './components/feature-content';
 import Article from './components/article';
 
 ReactDOM.render(
-    <Wrapper>
-        <Header title="Guides" name="Author"/>
-        <NavBar />
-        <FeatureContent>
-            <Article title="Guides">
-                Killer Content
-            </Article>
-        </FeatureContent>
-        <Footer name="Author"/>
-    </Wrapper>,
-    document.getElementById('app'));
+  <Wrapper>
+    <Header title="Guides" name="Author" />
+    <NavBar />
+    <FeatureContent>
+      <Article title="Guides">
+          Killer Content
+      </Article>
+    </FeatureContent>
+    <Footer name="Author" />
+  </Wrapper>,
+  document.getElementById('app'));

@@ -3,8 +3,6 @@ var webpack = require('webpack'),
     rootFolder = 'guides',
     libFolder = 'src';
 
-console.log(__dirname + '/' + rootFolder + '/build');
-
 module.exports = {
     entry: [
         'webpack-dev-server/client?http://localhost:5000',
