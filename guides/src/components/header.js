@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
+require('!style!css!sass!./../../../src/sass/Layout.scss');
+
 let Mixin = InnerComponent => class extends Component {
 
     constructor(props) {

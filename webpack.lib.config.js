@@ -3,9 +3,13 @@
 var libraryName = 'Blog',
     webpack = require('webpack'),
     path = require('path'),
+    sassLintPlugin = require('sasslint-webpack-plugin'),
     plugins = [],
     rootFolder,
     outputFile;
+
+// TODO: need to add linter to pre-loader for webpack
+var sasslint = new sassLintPlugin();
 
 var definePlugin = new webpack.DefinePlugin({
     __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true')),
@@ -69,11 +73,20 @@ module.exports = {
                     path.resolve(__dirname)
                 ],
                 test: /\.json$/
+            },
+            {
+                test: /\.scss$/,
+                loaders: ["style", "css?sourceMap", "sass?sourceMap"]
             }
         ]
     },
+    sassLoader: {
+        includePaths: [
+            path.resolve(__dirname, "./src")
+        ]
+    },
     resolve: {
-        extensions: ['', '.js', '.json']
+        extensions: ['', '.js', '.json', '.scss']
     },
     plugins: plugins
 };

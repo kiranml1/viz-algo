@@ -1,5 +1,7 @@
 var webpack = require('webpack'),
     path = require('path'),
+    // TODO: need to add linter to pre-loader for webpack
+    sassLintPlugin = require('sasslint-webpack-plugin'),
     rootFolder = 'guides',
     libFolder = 'src';
 
@@ -52,11 +54,21 @@ module.exports = {
                     path.resolve(__dirname)
                 ],
                 test: /\.json$/
+            },
+            {
+                test: /\.scss$/,
+                loaders: ["style", "css?sourceMap", "sass?sourceMap"]
             }
         ]
     },
+    sassLoader: {
+        includePaths: [
+            path.resolve(__dirname, "./src"),
+            path.resolve(__dirname, "./guides")
+        ]
+    },
     resolve: {
-        extensions: ['', '.js','.json']
+        extensions: ['', '.js', '.json', '.scss']
     },
     devtool: 'eval-source-map',
     plugins: [

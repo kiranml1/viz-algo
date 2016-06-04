@@ -1,4 +1,4 @@
-import Blog from './blog';
+import Blog from './modules/blog';
 
 if (__DEV__) {
     console.warn('Dev Mode');
