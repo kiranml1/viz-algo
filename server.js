@@ -1,10 +1,10 @@
 /* eslint-disable no-var, strict */
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.guides.react.config');
+var config = require('./webpack.renderer.react.config.js');
 
 new WebpackDevServer(webpack(config), {
-    contentBase: 'guides',
+    contentBase: 'renderer-react',
     publicPath: config.output.publicPath,
     hot: true,
     historyApiFallback: true

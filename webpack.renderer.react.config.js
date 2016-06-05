@@ -1,12 +1,18 @@
 var webpack = require('webpack'),
     path = require('path'),
-    rootFolder = 'guides',
+    // TODO: need to add linter to pre-loader for webpack
+    sassLintPlugin = require('sasslint-webpack-plugin'),
+    rootFolder = 'renderer-react',
     libFolder = 'src';
 
 module.exports = {
-    entry: './guides/src/main',
+    entry: [
+        'webpack-dev-server/client?http://localhost:5000',
+        'webpack/hot/dev-server',
+        './renderer-react/src/main'
+    ],
     output: {
-        path: path.join(__dirname, rootFolder, 'build'),
+        path: __dirname + '/' + rootFolder + '/build',
         publicPath: '/build',
         filename: 'bundle.js'
     },
@@ -48,24 +54,25 @@ module.exports = {
                     path.resolve(__dirname)
                 ],
                 test: /\.json$/
+            },
+            {
+                test: /\.scss$/,
+                loaders: ["style", "css?sourceMap", "sass?sourceMap"]
             }
         ]
     },
-    resolve: {
-        extensions: ['', '.js', '.json']
+    sassLoader: {
+        includePaths: [
+            path.resolve(__dirname, "./src"),
+            path.resolve(__dirname, "./renderer-react")
+        ]
     },
-    devtool: 'source-map',
+    resolve: {
+        extensions: ['', '.js', '.json', '.scss']
+    },
+    devtool: 'eval-source-map',
     plugins: [
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify('production')
-            }
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        })
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin()
     ]
 };

@@ -1,5 +1,4 @@
-import config from './config';
-import { version } from './../package.json';
+import { version } from './../../package.json';
 
 let framework = {};
 

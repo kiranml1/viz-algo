@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Blog from '../../../src/blog';
+import Blog from '../../../src/modules/blog';
 
 export default class BlogRenderer extends Component {
 

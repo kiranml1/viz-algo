@@ -1,18 +1,12 @@
 var webpack = require('webpack'),
     path = require('path'),
-    rootFolder = 'guides',
+    rootFolder = 'renderer-react',
     libFolder = 'src';
 
-console.log(__dirname + '/' + rootFolder + '/build');
-
 module.exports = {
-    entry: [
-        'webpack-dev-server/client?http://localhost:5000',
-        'webpack/hot/dev-server',
-        './guides/src/main'
-    ],
+    entry: './renderer-react/src/main',
     output: {
-        path: __dirname + '/' + rootFolder + '/build',
+        path: path.join(__dirname, rootFolder, 'build'),
         publicPath: '/build',
         filename: 'bundle.js'
     },
@@ -58,11 +52,20 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['', '.js','.json']
+        extensions: ['', '.js', '.json']
     },
-    devtool: 'eval-source-map',
+    devtool: 'source-map',
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production')
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
     ]
 };
