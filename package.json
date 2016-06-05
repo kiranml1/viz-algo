@@ -17,7 +17,8 @@
     "react-karma": "karma start --single-run --no-auto-watch karma.react.config.js",
     "react-test": "mocha --opts ./renderer-react/tests/mocha.opts ./renderer-react/tests",
     "react-test-coverage": "babel-node node_modules/isparta/bin/isparta cover --report text --report html node_modules/mocha/bin/_mocha -- --reporter dot ./renderer-react/tests/**/*.spec.js",
-    "react-test-watch": "npm run react-test -w"
+    "react-test-watch": "npm run react-test -w",
+    "gen-doc": "./doc.sh"
   },
   "author": "Amruthaluri Kiran Kumar",
   "license": "MIT",
@@ -39,6 +40,7 @@
     "coveralls": "^2.11.9",
     "css-loader": "^0.23.1",
     "enzyme": "^2.3.0",
+    "esdoc": "^0.4.7",
     "eslint": "^2.11.1",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-config-standard-jsx": "^1.2.0",

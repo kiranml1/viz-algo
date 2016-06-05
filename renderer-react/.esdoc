@@ -1,0 +1,6 @@
+{
+	"title": "Kefex Components",
+	"source": "./renderer-react/src",
+	"destination": "./renderer-react/doc/esdoc",
+	"excludes": ["\\.(js|es6|scss)$"]
+}

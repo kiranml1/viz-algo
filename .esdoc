@@ -1,0 +1,6 @@
+{
+	"title": "Kefex",
+	"source": "./src",
+	"destination": "./doc/esdoc",
+	"excludes": ["\\.(js|es6|scss)$"]
+}

@@ -1,6 +1,8 @@
 lib
 build
 .idea
+doc
+renderer-react/doc
 renderer-react/build
 renderer-react/coverage
 coverage
