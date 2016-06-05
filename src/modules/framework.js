@@ -1,6 +1,6 @@
 import { version } from './../../package.json';
 
-let framework = {};
+const framework = {};
 
 framework.version = version;
 
