@@ -1,1 +1,10 @@
 node_modules
+build
+lib
+*.config.js
+.idea
+doc
+renderer-react/doc
+renderer-react/build
+renderer-react/coverage
+coverage

@@ -1,4 +1,5 @@
 #!/bin/bash
+# script for development tasks for library and react project
 npm install
 npm run lib-lint
 npm run lib-karma

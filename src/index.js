@@ -16,7 +16,6 @@ import Blog from './modules/blog';
  * TODO: Add scss linter
  * TODO: Add scss build with webpack
  * TODO: Add isparata to the test coverage with es6 support
- * TODO: Add documentation support for both projects - framework and renderer
  * TODO: Add E2E support for blog development, which is currently a project along side running with
  * renderer-react
  * TODO: Add Rx JS for Async support to the framework

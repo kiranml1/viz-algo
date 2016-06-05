@@ -1,5 +1,11 @@
 import React, { PropTypes } from 'react';
 
+/**
+ * Blog renderer
+ * @param props
+ * @returns {XML}
+ * @constructor
+ */
 export default function BlogRenderer(props) {
   return (
     <header>
