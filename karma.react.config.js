@@ -5,11 +5,11 @@ module.exports = function(config) {
         basePath: '',
         frameworks: ['jasmine'],
         files: [
-            'guides/tests/**/*.js'
+            'renderer-react/tests/**/*.js'
         ],
         preprocessors: {
-            'guides/src/**/*.js': ['webpack', 'sourcemap'],
-            'guides/tests/**/*.js': ['webpack', 'sourcemap']
+            'renderer-react/src/**/*.js': ['webpack', 'sourcemap'],
+            'renderer-react/tests/**/*.js': ['webpack', 'sourcemap']
         },
         webpack: {
             // kind of a copy of your webpack config
@@ -61,7 +61,7 @@ module.exports = function(config) {
         // report results in this format
         reporters: [ 'spec', 'coverage' ],
         coverageReporter: {
-            dir: 'guides/coverage',
+            dir: 'renderer-react/coverage',
             reporters: [
                 { type: 'html', subdir: 'report-html' },
                 { type: 'lcov', subdir: 'report-lcov' },

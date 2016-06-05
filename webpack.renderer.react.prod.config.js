@@ -1,10 +1,10 @@
 var webpack = require('webpack'),
     path = require('path'),
-    rootFolder = 'guides',
+    rootFolder = 'renderer-react',
     libFolder = 'src';
 
 module.exports = {
-    entry: './guides/src/main',
+    entry: './renderer-react/src/main',
     output: {
         path: path.join(__dirname, rootFolder, 'build'),
         publicPath: '/build',

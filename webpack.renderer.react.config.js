@@ -2,14 +2,14 @@ var webpack = require('webpack'),
     path = require('path'),
     // TODO: need to add linter to pre-loader for webpack
     sassLintPlugin = require('sasslint-webpack-plugin'),
-    rootFolder = 'guides',
+    rootFolder = 'renderer-react',
     libFolder = 'src';
 
 module.exports = {
     entry: [
         'webpack-dev-server/client?http://localhost:5000',
         'webpack/hot/dev-server',
-        './guides/src/main'
+        './renderer-react/src/main'
     ],
     output: {
         path: __dirname + '/' + rootFolder + '/build',
@@ -64,7 +64,7 @@ module.exports = {
     sassLoader: {
         includePaths: [
             path.resolve(__dirname, "./src"),
-            path.resolve(__dirname, "./guides")
+            path.resolve(__dirname, "./renderer-react")
         ]
     },
     resolve: {

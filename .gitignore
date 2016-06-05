@@ -1,8 +1,8 @@
 lib
 build
 .idea
-guides/build
-guides/coverage
+renderer-react/build
+renderer-react/coverage
 coverage
 
 # Compiled source #

@@ -1,5 +1,5 @@
 import chai from 'chai';
-import Blog from '../src/modules/blog';
+import Blog from '../../src/modules/blog';
 import moment from 'moment';
 let expect = chai.expect;
 
