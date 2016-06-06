@@ -1,22 +1,28 @@
 import framework from './framework';
-import moment from 'moment';
 
 /**
- * Blog - Class for framework with setters and getters
- * for version, name and title with created time stamp
+ * Blog instance
+ */
+let instance;
+
+/**
+ * This a initial entry point of a blog creation
+ * with name and title, which should be called alteast once to
+ * create blog and should a instance of this class
+ * with name and title, which are optional while calling which will set
+ * to 'unknown' or 'no title' names
  */
 export default class Blog {
 
   /**
    * Constructor for Blog Class
    * @param title Title for blog instance
-   * @param name Name for blog instance
+   * @param author Name for blog instance
    */
-  constructor(title, name) {
-    this.name = name;
+  constructor(title = 'no-title', author = 'unknown-author') {
+    this.author = author;
     this.title = title;
     this.setVersion();
-    this.createdTimestmap = moment().format();
   }
 
   /**
@@ -35,19 +41,19 @@ export default class Blog {
   }
 
   /**
-   * set name for the blog
-   * @param name
+   * set author for the blog
+   * @param author
    */
-  setName(name) {
-    this.name = name;
+  setName(author) {
+    this.author = author;
   }
 
   /**
-   * return name for the blog
+   * return author for the blog
    * @returns {*}
    */
-  getName() {
-    return this.name;
+  getAuthor() {
+    return this.author;
   }
 
   /**
@@ -65,12 +71,17 @@ export default class Blog {
   getTitle() {
     return this.title;
   }
+}
 
-  /**
-   * return time stamp for blog instance
-   * @returns {*|any|string}
-   */
-  getCreatedTime() {
-    return this.createdTimestmap;
+/**
+ * Creates blog instance with name and title
+ * @param name Name of the blog
+ * @param title Title of the blog
+ * @returns {*}
+ */
+export function blogInstance(name, title) {
+  if (!instance) {
+    instance = new Blog(name, title);
   }
+  return instance;
 }

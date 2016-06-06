@@ -1,42 +1,111 @@
 import chai from 'chai';
-import Blog from '../../src/modules/blog';
+import Blog, { blogInstance } from '../../src/modules/blog';
 import moment from 'moment';
 let expect = chai.expect;
+import { version } from '../../package.json';
 
-describe('should match', () => {
+describe('initial blog instantiation suite', () => {
 
-    let blog,
-        createdTime;
+    describe('when blog instance is created with no title and author', function(){
 
-    beforeEach(() => {
-        blog = new Blog("Test", "Tester");
-        createdTime = moment().format();
+        let blog;
+
+        beforeEach(() => {
+            blog = new Blog();
+        });
+
+        it('version',() => {
+            expect(blog.getVersion()).to.equal(version);
+        });
+
+        it('title',() => {
+            expect(blog.getTitle()).to.equal('no-title');
+        });
+
+        it('author',() => {
+            expect(blog.getAuthor()).to.equal('unknown-author');
+        });
+
+        it('when we set author', () => {
+            blog.setName('Some Author');
+            expect(blog.getAuthor()).to.equal('Some Author');
+        });
+
+        it('when we set title', () => {
+            blog.setTitle('Some Title');
+            expect(blog.getTitle()).to.equal('Some Title');
+        });
+
     });
 
-    it('version',() => {
-        expect(blog.getVersion()).to.equal("0.0.1");
+    describe('when blog instance is created with title and author', function(){
+
+        let blog;
+
+        beforeEach(() => {
+            blog = new Blog('Test', 'Tester');
+        });
+
+        it('version',() => {
+            expect(blog.getVersion()).to.equal(version);
+        });
+
+        it('title',() => {
+            expect(blog.getTitle()).to.equal('Test');
+        });
+
+        it('author',() => {
+            expect(blog.getAuthor()).to.equal('Tester');
+        });
+
+        it('when we set author', () => {
+            blog.setName('Some Author');
+            expect(blog.getAuthor()).to.equal('Some Author');
+        });
+
+        it('when we set title', () => {
+            blog.setTitle('Some Title');
+            expect(blog.getTitle()).to.equal('Some Title');
+        });
+
     });
 
-    it('title',() => {
-        expect(blog.getTitle()).to.equal("Test");
-    });
+    describe('when blog is created from a instance function with title and author', function() {
 
-    it('name',() => {
-        expect(blog.getName()).to.equal("Tester");
-    });
+        let blogone,
+            blogtwo;
 
-    it('created time', () => {
-        expect(blog.getCreatedTime()).to.equal(createdTime);
-    });
+        beforeEach(() => {
+            blogone = blogInstance('Test', 'Tester');
+            blogtwo = blogInstance('Test', 'Tester');
+        });
 
-    it('when we set name', () => {
-        blog.setName('Some Tester');
-        expect(blog.getName()).to.equal("Some Tester");
-    });
+        it('instance should not be created again which must be singleton', function(){
+            expect(blogone).to.equal(blogtwo);
+        });
 
-    it('when we set title', () => {
-        blog.setTitle('Some Test');
-        expect(blog.getTitle()).to.equal("Some Test");
+        it('version',() => {
+            expect(blogone.getVersion()).to.equal(version);
+        });
+
+        it('title',() => {
+            expect(blogone.getTitle()).to.equal('Test');
+        });
+
+        it('author',() => {
+            expect(blogone.getAuthor()).to.equal('Tester');
+        });
+
+        it('when we set author', () => {
+            blogone.setName('Some Author');
+            expect(blogone.getAuthor()).to.equal('Some Author');
+        });
+
+        it('when we set title', () => {
+            blogone.setTitle('Some Title');
+            expect(blogone.getTitle()).to.equal('Some Title');
+        });
+
     });
 
 });
