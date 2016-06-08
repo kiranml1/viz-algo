@@ -58,11 +58,11 @@ describe('Singleton helper class suite', () => {
   describe('Test Singleton Class', () => {
 
     it('Singleton getInstances should have called instances', () => {
-      expect(SingletonHelper._instances.length).to.equal(2);
+      expect(SingletonHelper.instances.length).to.equal(2);
     });
 
     it('Singleton instance should be last called class', () => {
-      expect(SingletonHelper._instanceOfClass instanceof Blog).to.equal(true);
+      expect(SingletonHelper.instanceOfClass instanceof Blog).to.equal(true);
     });
 
   });

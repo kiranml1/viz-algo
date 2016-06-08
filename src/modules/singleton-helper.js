@@ -6,7 +6,7 @@ export default class SingletonHelper {
    * it throws error if we try to create with new operator
    */
   constructor() {
-    throw `You\re trying instantiate a singleton helper.`;
+    throw new Error('You\'re trying instantiate a singleton helper.');
   }
 
   /**
@@ -15,7 +15,7 @@ export default class SingletonHelper {
    * @param instance Instance of the class which will be passed from callClass method
    */
   static storeInstances(instance) {
-    SingletonHelper._instances.push(instance);
+    SingletonHelper.instances.push(instance);
   }
 
   /**
@@ -25,14 +25,14 @@ export default class SingletonHelper {
    * @returns {boolean}
    */
   static isInstanceInStore(className) {
-    let _exists = false;
-    for (let i = 0; i < SingletonHelper._instances.length; i += 1) {
-      if (SingletonHelper._instances[i] && SingletonHelper._instances[i] instanceof className) {
-        _exists = true;
+    let exists = false;
+    for (let i = 0; i < SingletonHelper.instances.length; i += 1) {
+      if (SingletonHelper.instances[i] && SingletonHelper.instances[i] instanceof className) {
+        exists = true;
         break;
       }
     }
-    return _exists;
+    return exists;
   }
 
   /**
@@ -41,31 +41,30 @@ export default class SingletonHelper {
    * @returns {*}
    */
   static getInstance(className) {
-    let _instance;
-    for (let i = 0; i < SingletonHelper._instances.length; i += 1) {
-      if (SingletonHelper._instances[i] && SingletonHelper._instances[i] instanceof className) {
-        _instance = SingletonHelper._instances[i];
+    let instance;
+    for (let i = 0; i < SingletonHelper.instances.length; i += 1) {
+      if (SingletonHelper.instances[i] && SingletonHelper.instances[i] instanceof className) {
+        instance = SingletonHelper.instances[i];
         break;
       }
     }
-    return _instance;
+    return instance;
   }
 
   /**
    * Main function to be used if we want to create an instance of the class
    * and stores it / gives the instance from existing instance store
-   * @param className
-   * @param params
    * @returns {*}
    */
-  static callClass(className, params) {
+  static callClass(...args) {
+    const className = args[0];
     if (SingletonHelper.isInstanceInStore(className)) {
-      SingletonHelper._instanceOfClass = SingletonHelper.getInstance(className);
+      SingletonHelper.instanceOfClass = SingletonHelper.getInstance(className);
     } else {
-      SingletonHelper._instanceOfClass = new (className.bind.apply(className, arguments));
-      SingletonHelper.storeInstances(SingletonHelper._instanceOfClass);
+      SingletonHelper.instanceOfClass = new (className.bind.apply(className, args));
+      SingletonHelper.storeInstances(SingletonHelper.instanceOfClass);
     }
-    return SingletonHelper._instanceOfClass;
+    return SingletonHelper.instanceOfClass;
   }
 
 }
@@ -75,10 +74,10 @@ export default class SingletonHelper {
  * @type {undefined}
  * @private
  */
-SingletonHelper._instanceOfClass = undefined;
+SingletonHelper.instanceOfClass = undefined;
 /**
  * Collection of instances for SingletonHelper class
  * @type {Array}
  * @private
  */
-SingletonHelper._instances = [];
+SingletonHelper.instances = [];
