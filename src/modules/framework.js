@@ -1,9 +1,23 @@
 import { version } from './../../package.json';
 
-const framework = {};
+/**
+ * Framework class with version property
+ */
+export default class Framework {
 
-framework.version = version;
+  /**
+   * @constructor
+   */
+  constructor() {
+    this.version = version;
+  }
 
-framework.getVersion = () => framework.version;
+  /**
+   * give version of the framework
+   * @returns {*}
+   */
+  getVersion() {
+    return this.version;
+  }
 
-export default framework;
+}
