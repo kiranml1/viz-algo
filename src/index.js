@@ -1,11 +1,13 @@
 import SingletonHelper from './modules/singleton-helper';
 import Blog from './modules/blog';
 import Framework from './modules/framework';
+import Post from './modules/post';
 
 const namespace = {
   Framework,
   Blog,
   SingletonHelper,
+  Post,
 };
 
 /**
