@@ -1,4 +1,12 @@
+import SingletonHelper from './modules/singleton-helper';
 import Blog from './modules/blog';
+import Framework from './modules/framework';
+
+const namespace = {
+  Framework,
+  Blog,
+  SingletonHelper,
+};
 
 /**
  * Architecture Notes:
@@ -23,4 +31,4 @@ import Blog from './modules/blog';
  * TODO: Need to develop a layout mixins in responsvie mode fot the blog in scss
  */
 
-export default Blog;
+export default namespace;

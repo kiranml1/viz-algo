@@ -27,7 +27,8 @@ export default class SingletonHelper {
   static isInstanceInStore(className) {
     let exists = false;
     for (let i = 0; i < SingletonHelper.instances.length; i += 1) {
-      if (SingletonHelper.instances[i] && SingletonHelper.instances[i] instanceof className) {
+      if (SingletonHelper.instances[i]
+        && SingletonHelper.instances[i].constructor.name === className.name) {
         exists = true;
         break;
       }
@@ -43,7 +44,8 @@ export default class SingletonHelper {
   static getInstance(className) {
     let instance;
     for (let i = 0; i < SingletonHelper.instances.length; i += 1) {
-      if (SingletonHelper.instances[i] && SingletonHelper.instances[i] instanceof className) {
+      if (SingletonHelper.instances[i]
+        && SingletonHelper.instances[i].constructor.name === className.name) {
         instance = SingletonHelper.instances[i];
         break;
       }
