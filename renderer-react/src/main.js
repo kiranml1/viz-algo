@@ -15,9 +15,11 @@
  * content will be separated in a blog prototype
  */
 
+require('../../src/main.scss');
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Blog from './components/Blog';
+import Blog from './components/blog-component';
 
 ReactDOM.render(
   <Blog title="Guides" author="Author" />,
