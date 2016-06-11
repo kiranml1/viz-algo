@@ -25,7 +25,7 @@ import BlogRegistration from './components/blog-registration';
 
 ReactDOM.render(
   <Wrapper>
-    <Blog title="Blog Title" author="Author"/>
+    <Blog title="Blog Title" author="Author" />
     <BlogRegistration />
   </Wrapper>,
   document.getElementById('app'));

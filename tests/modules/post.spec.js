@@ -3,12 +3,10 @@ import Blog from '../../src/modules/blog';
 import Framework from '../../src/modules/framework';
 import SingletonHelper from '../../src/modules/singleton-helper';
 import chai from 'chai';
-let expect = chai.expect;
+const expect = chai.expect;
 
 describe('Post class spec suite', () => {
-
   describe('Should class extend from Blog', () => {
-
     let postInstance;
 
     beforeEach(() => {
@@ -30,13 +28,10 @@ describe('Post class spec suite', () => {
     it('instance should not match unextended class', () => {
       expect(postInstance instanceof SingletonHelper).to.equal(false);
     });
-
   });
 
   describe('Assetimg Properties and methods of Post class', () => {
-
     let postInstance;
-
     beforeEach(() => {
       postInstance = new Post('Some Title');
     });
@@ -64,7 +59,5 @@ describe('Post class spec suite', () => {
       postInstance.setContent('Some content');
       expect(postInstance.getContent()).to.equal('Some content');
     });
-
   });
-
 });

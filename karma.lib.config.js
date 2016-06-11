@@ -3,6 +3,19 @@ var webpack = require('karma-webpack'),
   // original webpack configuration of library
   webpacklibConfig = require('./webpack.lib.config.js');
 
+webpacklibConfig.eslint = {
+  // eslint configuration
+  configFile: './test.eslintrc'
+};
+
+webpacklibConfig.module.preLoaders = [{
+    // eslint configuration
+    loader: "eslint-loader",
+    // Only run `.js` and `.jsx` files through Babel
+    test: /\.jsx?$/
+  }
+];
+
 // loader overrides for karma configuration for webpack
 webpacklibConfig.module.loaders = [
   {

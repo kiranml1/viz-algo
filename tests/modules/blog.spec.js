@@ -2,13 +2,11 @@ import chai from 'chai';
 import Blog from '../../src/modules/blog';
 import Framework from '../../src/modules/framework';
 import SingletonHelper from '../../src/modules/singleton-helper';
-let expect = chai.expect;
+const expect = chai.expect;
 import { version } from '../../package.json';
 
 describe('Blog class spec suite', () => {
-
-  describe('Blog with new instance', function () {
-
+  describe('Blog with new instance', () => {
     let blog;
 
     beforeEach(() => {
@@ -40,11 +38,9 @@ describe('Blog class spec suite', () => {
     it('instance should match framework class', () => {
       expect(blog instanceof Framework).to.equal(true);
     });
-
   });
 
-  describe('when blog instance is created with title and author', function () {
-
+  describe('when blog instance is created with title and author', () => {
     let blog;
 
     beforeEach(() => {
@@ -76,11 +72,9 @@ describe('Blog class spec suite', () => {
     it('instance should match framework class', () => {
       expect(blog instanceof Framework).to.equal(true);
     });
-
   });
 
-  describe('when blog instance is created with singleton title and author', function () {
-
+  describe('when blog instance is created with singleton title and author', () => {
     let blog;
 
     beforeEach(() => {
@@ -102,11 +96,9 @@ describe('Blog class spec suite', () => {
     it('instance should match framework class', () => {
       expect(blog instanceof Framework).to.equal(true);
     });
-
   });
 
-  describe('when blog instance is created for second time with singleton without title and author', () => {
-
+  describe('blog created for second time with singleton without title and author', () => {
     let blog;
 
     beforeEach(() => {
@@ -117,11 +109,13 @@ describe('Blog class spec suite', () => {
       expect(blog.getVersion()).to.equal(version);
     });
 
-    it('should not match title with no arguments in class since it is singleton and already ran in above spec', function () {
+    it('should not match title with no arguments in class since ' +
+      'it is singleton and already ran in above spec', () => {
       expect(blog.getTitle()).to.not.equal('no-title');
     });
 
-    it('should not match author with no arguments in class since it is singleton and already ran in above spec', function () {
+    it('should not match author with no arguments in class since it is ' +
+      'singleton and already ran in above spec', () => {
       expect(blog.getTitle()).to.not.equal('unknown-author');
     });
 
@@ -146,7 +140,5 @@ describe('Blog class spec suite', () => {
     it('instance should match framework class', () => {
       expect(blog instanceof Framework).to.equal(true);
     });
-
   });
-
 });

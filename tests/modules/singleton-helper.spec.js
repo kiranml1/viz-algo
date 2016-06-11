@@ -3,12 +3,10 @@ import Framework from '../../src/modules/framework';
 import Blog from '../../src/modules/blog';
 import { version } from './../../package.json';
 import chai from 'chai';
-let expect = chai.expect;
+const expect = chai.expect;
 
 describe('Singleton helper class suite', () => {
-
   describe('Framework singleton instantiation test with helper', () => {
-
     let instanceOfClass;
 
     beforeEach(() => {
@@ -25,14 +23,12 @@ describe('Singleton helper class suite', () => {
     });
 
     it('Instance of the class should be a singleton', () => {
-      var secondInstanceOfClass = SingletonHelper.callClass(Framework);
+      const secondInstanceOfClass = SingletonHelper.callClass(Framework);
       expect(secondInstanceOfClass).to.equal(instanceOfClass);
     });
-
   });
 
   describe('Blog singleton instantiation test with helper', () => {
-
     let instanceOfClass;
 
     beforeEach(() => {
@@ -49,14 +45,12 @@ describe('Singleton helper class suite', () => {
     });
 
     it('Instance of the class should be a singleton', () => {
-      var secondInstanceOfClass = SingletonHelper.callClass(Blog);
+      const secondInstanceOfClass = SingletonHelper.callClass(Blog);
       expect(secondInstanceOfClass).to.equal(instanceOfClass);
     });
-
   });
 
   describe('Test Singleton Class', () => {
-
     it('Singleton getInstances should have called instances', () => {
       expect(SingletonHelper.instances.length).to.equal(2);
     });
@@ -64,7 +58,5 @@ describe('Singleton helper class suite', () => {
     it('Singleton instance should be last called class', () => {
       expect(SingletonHelper.instanceOfClass instanceof Blog).to.equal(true);
     });
-
   });
-
 });
