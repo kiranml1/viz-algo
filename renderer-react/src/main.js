@@ -19,8 +19,13 @@ require('../../src/main.scss');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Wrapper from './components/layout';
 import Blog from './components/blog-component';
+import BlogRegistration from './components/blog-registration';
 
 ReactDOM.render(
-  <Blog title="Guides" author="Author" />,
+  <Wrapper>
+    <Blog title="Blog Title" author="Author"/>
+    <BlogRegistration />
+  </Wrapper>,
   document.getElementById('app'));

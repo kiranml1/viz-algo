@@ -1,0 +1,15 @@
+.main-wrapper {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  @extend .main-wrapper;
+}
+
+.layout-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f0f8ff;
+}

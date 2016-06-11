@@ -6,18 +6,15 @@ import React, { PropTypes } from 'react';
  * @returns {XML}
  * @constructor
  */
-export default function BlogRenderer(props) {
+export default function BlogWrapper(props) {
   return (
     <header>
-      <hgroup>
-        <h1>{props.title}</h1>
-        <h2>{props.name}</h2>
-      </hgroup>
+      <h1>{`${props.title} @ ${props.author}`}</h1>
     </header>
   );
 }
 
-BlogRenderer.propTypes = {
+BlogWrapper.propTypes = {
   title: PropTypes.string,
-  name: PropTypes.string,
+  author: PropTypes.string,
 };
