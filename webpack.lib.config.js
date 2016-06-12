@@ -17,7 +17,9 @@ var libraryName = 'Blog',
   outputFile;
 
 // TODO: need to add linter to pre-loader for webpack
-var sasslint = new sassLintPlugin();
+var sasslint = new sassLintPlugin({
+  context: './src/',
+});
 
 // TODO: need ro refactor if it can be used for global env variables in application code
 var definePlugin = new webpack.DefinePlugin({
@@ -29,6 +31,8 @@ var definePlugin = new webpack.DefinePlugin({
 
 // define plug-in is included in plug-ins
 plugins.push(definePlugin);
+
+plugins.push(sasslint);
 
 // output file for the library
 outputFile = libraryName + '.js';

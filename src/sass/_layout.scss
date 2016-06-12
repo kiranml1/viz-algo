@@ -1,15 +1,17 @@
-.main-wrapper {
+$layout-bg: #f0f8ff;
+
+.main-wrapper, %main-wrapper {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 body {
-  @extend .main-wrapper;
+  @extend %main-wrapper;
 }
 
 .layout-wrapper {
-  max-width: 1200px;
+  background-color: $layout-bg;
   margin: 0 auto;
-  background-color: #f0f8ff;
+  max-width: 1200px;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import CreateInputButton from '../form.helpers/create-input-button';
+import CreateInputButton from '../form-helpers/create-input-button';
 
 export default class CreateBlog extends CreateInputButton {
 
