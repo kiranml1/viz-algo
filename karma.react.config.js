@@ -20,7 +20,20 @@ module.exports = function(config) {
     webpack: {
       // just do inline source maps instead of the default
       devtool: 'inline-source-map',
+      eslint: {
+        // eslint configuration
+        configFile: './test.eslintrc'
+      },
       module: {
+        // preloader
+        preLoaders: [
+          {
+            // eslint configuration
+            loader: "eslint-loader",
+            // Only run `.js` and `.jsx` files through Babel
+            test: /\.jsx?$/
+          }
+        ],
         // loaders
         loaders: [
           {
