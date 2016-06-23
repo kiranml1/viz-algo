@@ -1,7 +1,7 @@
 {
   "name": "Kefex",
   "version": "0.0.1",
-  "description": "simple blog framework",
+  "description": "Simple blogging framework",
   "scripts": {
     "lib-build": "BUILD_PRERELEASE=true webpack --config webpack.lib.prod.config.js --progress --colors",
     "lib-dev": "BUILD_DEV=true webpack --config webpack.lib.config.js --progress --colors --watch",
@@ -20,8 +20,22 @@
     "react-test-watch": "npm run react-test -w",
     "gen-doc": "./doc.sh"
   },
+  "keywords": [
+    "blog",
+    "kefex",
+    "js",
+    "react"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kiranml1/blog-framework.git"
+  },
   "author": "Amruthaluri Kiran Kumar",
   "license": "MIT",
+  "licenses": [{
+    "type": "MIT",
+    "url": "https://github.com/kiranml1/blog-framework/blob/master/LICENSE"
+  }],
   "devDependencies": {
     "babel-cli": "^6.9.0",
     "babel-core": "^6.9.0",
