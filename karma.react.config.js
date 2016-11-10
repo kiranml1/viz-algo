@@ -61,7 +61,7 @@ module.exports = function(config) {
           // exclude node_modules or bower_components or tests folder
           exclude: /(node_modules|bower_components|tests)/,
           // currently this test coverage only gives report of postload which is not es2015 compatible
-          // TODO: need to work on isparata or equivalent toolf for es2015 support
+          // TODO: need to work on isparata or equivalent tool for es2015 support
           loader: 'istanbul-instrumenter'
         }]
       },

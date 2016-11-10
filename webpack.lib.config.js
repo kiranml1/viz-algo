@@ -1,25 +1,19 @@
 'use strict';
 
 // framework name
-// TODO: need to pick the library name from package.json
-var libraryName = 'Blog',
+var libraryName = require('./package.json').name,
   // webpack
   webpack = require('webpack'),
   // path
   path = require('path'),
-  // sass linter plugin
-  sassLintPlugin = require('sasslint-webpack-plugin'),
   // plugins array
   plugins = [],
   // base folder for this configuration
   rootFolder,
+  // output folder for this configuration
+  outputFolder,
   // output file for the code
   outputFile;
-
-// TODO: need to add linter to pre-loader for webpack
-var sasslint = new sassLintPlugin({
-  context: './src/',
-});
 
 // TODO: need ro refactor if it can be used for global env variables in application code
 var definePlugin = new webpack.DefinePlugin({
@@ -32,12 +26,12 @@ var definePlugin = new webpack.DefinePlugin({
 // define plug-in is included in plug-ins
 plugins.push(definePlugin);
 
-plugins.push(sasslint);
-
 // output file for the library
 outputFile = libraryName + '.js';
 // base folder
 rootFolder = 'src';
+//output folder
+outputFolder = 'lib';
 
 // web pack configuration
 module.exports = {
@@ -46,7 +40,7 @@ module.exports = {
     // Set up an ES6-ish environment
     'babel-polyfill',
     // Add your application's scripts below
-    './' + rootFolder + '/index'
+    path.resolve(__dirname, rootFolder, 'index')
   ],
   // debug mode
   debug: true,
@@ -59,7 +53,7 @@ module.exports = {
   // output files
   output: {
     // path
-    path: __dirname + '/lib',
+    path: path.resolve(__dirname, outputFolder),
     // file name
     filename: outputFile,
     // library name
@@ -96,30 +90,20 @@ module.exports = {
             plugins: ['transform-runtime'],
             presets: ['es2015', 'stage-0', 'react']
         }
-      },
-      {
+      }, {
         // json configuration
         loader: 'json-loader',
+        // paths to current folder
         include: [
             path.resolve(__dirname)
         ],
+        // test for filters
         test: /\.json$/
-      },
-      {
-        // scss loaders and compilers
-        test: /\.scss$/,
-        loaders: ["style", "css?sourceMap", "sass?sourceMap"]
       }
     ]
   },
-  // scss loaders and compilers
-  sassLoader: {
-    includePaths: [
-      path.resolve(__dirname, "./src")
-    ]
-  },
   resolve: {
-    extensions: ['', '.js', '.json', '.scss']
+    extensions: ['', '.js', '.json']
   },
   plugins: plugins
 };

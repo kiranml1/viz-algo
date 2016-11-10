@@ -1,4 +1,4 @@
-// Karma webpack enabler
+// karma webpack enabler
 var webpack = require('karma-webpack'),
   // original webpack configuration of library
   webpacklibConfig = require('./webpack.lib.config.js');
@@ -25,7 +25,7 @@ webpacklibConfig.module.loaders = [
     test: /\.jsx?$/,
     // exclude node_modules folder
     exclude: /node_modules/,
-    // Options to configure babel with
+    // options to configure babel with
     query: {
       // plugin for karma to trandform the js harmony files on runtime
       plugins: ['transform-runtime'],
@@ -48,7 +48,7 @@ webpacklibConfig.module.postLoaders = [{
   // exclude node_modules or bower_components or tests folder
   exclude: /(node_modules|bower_components|tests)/,
   // currently this test coverage only gives report of postload which is not es2015 compatible
-  // TODO: need to work on isparata or equivalent toolf for es2015 support
+  // TODO: need to work on isparata or equivalent tool for es2015 support
   loader: 'istanbul-instrumenter'
 }];
 

@@ -92,7 +92,7 @@ module.exports = {
     extensions: ['', '.js', '.json', '.scss']
   },
   // dev mode
-  devtool: 'eval-source-map',
+  devtool: 'source-map',
   // plugins
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

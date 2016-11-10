@@ -1,5 +1,5 @@
 {
-  // JSHint Default Configuration File (for build config files)
+  // JSHint Default Configuration File (for build configuration files)
   // See http://jshint.com/docs/ for more details
 
   "maxerr"        : 50,       // {int} Maximum error before stopping

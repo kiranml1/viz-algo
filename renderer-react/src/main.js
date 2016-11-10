@@ -15,17 +15,17 @@
  * content will be separated in a blog prototype
  */
 
-require('../../src/main.scss');
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Wrapper from './components/layout';
 import Blog from './components/blog-component';
 import BlogRegistration from './components/blog-registration';
+import LogoComponent from './global-template-components/logo-component';
 
 ReactDOM.render(
   <Wrapper>
     <Blog title="Blog Title" author="Author" />
     <BlogRegistration />
+    <LogoComponent url="./img/global-templates/logo.png" desc="Global Template" title="Global" />
   </Wrapper>,
   document.getElementById('app'));

@@ -1,8 +1,7 @@
 'use strict';
 
 // framework name
-// TODO: need to pick the library name from package.json
-var libraryName = 'Blog',
+var libraryName = require('./package.json').name,
   // webpack
   webpack = require('webpack'),
   // uglify js webpack plug-in

@@ -1,9 +1,10 @@
-lib
 build
 .idea
-doc
+docs
+lib
 renderer-react/doc
 renderer-react/build
+renderer-react/img
 renderer-react/coverage
 coverage
 
