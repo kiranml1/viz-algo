@@ -14,5 +14,8 @@
   "extends": "airbnb",
   "plugins": [
     "react"
-  ]
+  ],
+  "rules": {
+    "no-underscore-dangle": [2, { "allowAfterThis": true }]
+  }
 }

@@ -1,3 +1,5 @@
+[ignore]
+
 build
 .idea
 docs
@@ -68,7 +70,12 @@ data
 extensions
 features
 files
-renderer-react
 screenshots
 chromedriver
 geckodriver
+
+[include]
+
+[libs]
+
+[options]
