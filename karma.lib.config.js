@@ -1,26 +1,32 @@
 // karma webpack enabler
 var webpack = require('karma-webpack'),
+  path = require('path'),
   // original webpack configuration of library
-  webpacklibConfig = require('./webpack.lib.config.js');
+  webpackLibConfig = require('./webpack.lib.config.js');
 
-webpacklibConfig.eslint = {
+webpackLibConfig.eslint = {
   // eslint configuration
-  configFile: './test.eslintrc'
+  configFile: './.eslintrc'
 };
 
-webpacklibConfig.module.preLoaders = [{
+webpackLibConfig.module.preLoaders = [{
     // eslint configuration
-    loader: "eslint-loader",
+    loader: 'eslint-loader',
     // Only run `.js` and `.jsx` files through Babel
     test: /\.jsx?$/
+  }, {
+  // transpile and instrument only testing sources with isparta
+    test: /\.jsx?$/,
+    include: path.resolve('src/'),
+    loader: 'isparta'
   }
 ];
 
 // loader overrides for karma configuration for webpack
-webpacklibConfig.module.loaders = [
+webpackLibConfig.module.loaders = [
   {
     // babel loader for js harmony files
-    loader: "babel-loader",
+    loader: 'babel-loader',
     // Only run `.js` and `.jsx` files through Babel
     test: /\.jsx?$/,
     // exclude node_modules folder
@@ -41,16 +47,15 @@ webpacklibConfig.module.loaders = [
   }
 ];
 
-// webpack post loaders
-webpacklibConfig.module.postLoaders = [{
-  // only test jsx files
-  test: /\.(js|jsx)$/,
-  // exclude node_modules or bower_components or tests folder
-  exclude: /(node_modules|bower_components|tests)/,
-  // currently this test coverage only gives report of postload which is not es2015 compatible
-  // TODO: need to work on isparata or equivalent tool for es2015 support
-  loader: 'istanbul-instrumenter'
-}];
+// *optional* isparta options: istanbul behind isparta will use it
+webpackLibConfig.isparta =  {
+  embedSource: true,
+    noAutoWrap: true,
+    // these babel options will be passed only to isparta and not to babel-loader
+    babel: {
+    presets: ['es2015', 'stage-0', 'react']
+  }
+};
 
 module.exports = function (config) {
   config.set({
@@ -61,11 +66,11 @@ module.exports = function (config) {
     // file patterns which must be included to test under the runner
     files: [
         './node_modules/phantomjs-polyfill/bind-polyfill.js',
-        'tests/**/*spec.js'
+        'tests/**/*.js'
     ],
     // pre-processors for the files which are loaded to process under webpack
     preprocessors: {
-        'tests/**/*spec.js': ['webpack'],
+        'tests/**/*.js': ['webpack'],
         'src/**/*.js': ['webpack']
     },
     // plug-ins which should be provided for running tests
@@ -79,19 +84,20 @@ module.exports = function (config) {
     // browsers to be used for test execution
     browsers: [ 'PhantomJS' ],
     // report results in this format
-    reporters: [ 'spec', 'coverage' ],
+    reporters: [ 'dots', 'coverage' ],
     // report configuration to be generated from the source
     coverageReporter: {
-      // directory for coverage report
-      dir: 'build/reports/coverage',
       reporters: [
-          { type: 'html', subdir: 'report-html' },
-          { type: 'lcov', subdir: 'report-lcov' },
-          { type: 'cobertura', subdir: '.', file: 'cobertura.txt' }
+        {
+          type: 'text-summary'
+        }, {
+          type: 'html',
+          dir: 'reports/coverage'
+        }
       ]
     },
     // webpack configuration assignment for karma
-    webpack: webpacklibConfig,
+    webpack: webpackLibConfig,
     // webpack server
     webpackServer: {
         // please don't spam the console when running in karma!

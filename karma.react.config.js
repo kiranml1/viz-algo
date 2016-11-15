@@ -22,7 +22,7 @@ module.exports = function(config) {
       devtool: 'inline-source-map',
       eslint: {
         // eslint configuration
-        configFile: './test.eslintrc'
+        configFile: './.eslintrc'
       },
       module: {
         // preloader
