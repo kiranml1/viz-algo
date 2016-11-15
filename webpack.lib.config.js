@@ -13,32 +13,33 @@ var libraryName = require('./package.json').name,
   // output folder for this configuration
   outputFolder,
   // output file for the code
-  outputFile;
+  outputFile,
+  // file extensions
+  extensions = ['', '.js', '.json'];
 
-// TODO: need ro refactor if it can be used for global env variables in application code
 var definePlugin = new webpack.DefinePlugin({
   // dev mode
   __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true')),
-  // pre-release candidate
-  __PRERELEASE__: JSON.stringify(JSON.parse(process.env.BUILD_PRERELEASE || 'false'))
+  // testable mode
+  __TEST__: JSON.stringify(JSON.parse(process.env.BUILD_TEST || 'false'))
 });
 
 // define plug-in is included in plug-ins
 plugins.push(definePlugin);
 
 // output file for the library
-outputFile = libraryName + '.js';
+outputFile = libraryName + extensions[1];
 // base folder
-rootFolder = 'src';
+rootFolder = require('./package.json').source;
 //output folder
-outputFolder = 'lib';
+outputFolder = require('./package.json').destination;
 
 // web pack configuration
 module.exports = {
   // entry files
   entry: [
-    // Set up an ES6-ish environment
-    'babel-polyfill',
+    // Set up an ES6-ish environment ( * but removed since webpack is causing error *)
+    // 'babel-polyfill',
     // Add your application's scripts below
     path.resolve(__dirname, rootFolder, 'index')
   ],
@@ -103,7 +104,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.json']
+    extensions: extensions
   },
   plugins: plugins
 };

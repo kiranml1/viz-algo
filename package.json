@@ -1,45 +1,49 @@
 {
-  "name": "kucumber",
+  "name": "vizalgo",
   "version": "0.0.1",
-  "description": "Cucumber framework",
-  "main": "./lib/kucumber.js",
+  "description": "Visualization Library",
+  "main": "./lib/vizalgo.js",
+  "source": "src",
+  "destination": "lib",
   "scripts": {
     "lib-build": "BUILD_DEV=true webpack --config webpack.lib.config.js --progress --colors",
-    "lib-dev-watch": "BUILD_DEV=true webpack --config webpack.lib.prod.config.js --progress --colors --watch",
-    "lib-prepublish": "BUILD_PRERELEASE=true webpack --config webpack.lib.config.js --progress --colors",
-    "lib-lint": "eslint ./src",
+    "lib-dev-watch": "BUILD_DEV=true webpack --config webpack.lib.config.js --progress --colors --watch",
+    "lib-prepublish": "BUILD_TEST=true webpack --config webpack.lib.prod.config.js --progress --colors",
+    "lib-lint": "BUILD_DEV=true eslint ./src",
     "lib-gen-doc": "esdoc -c ./.esdoc",
-    "lib-karma": "karma start --single-run --no-auto-watch karma.lib.config.js",
-    "lib-test": "mocha --opts tests/mocha.opts ./tests",
-    "lib-test-coverage": "babel-node node_modules/isparta/bin/isparta cover --report text --report html node_modules/mocha/bin/_mocha -- --reporter dot ./tests/**/*.spec.js",
-    "lib-test-watch": "npm run lib-test -w",
-    "react-build": "BUILD_PRERELEASE=true webpack --config webpack.renderer.react.prod.config.js --progress --colors",
-    "react-dev-server": "node server.js",
+    "lib-karma": "BUILD_DEV=true karma start --single-run --no-auto-watch karma.lib.config.js",
+    "lib-test": "BUILD_DEV=true mocha --opts tests/mocha.opts ./tests",
+    "lib-test-coverage": "node_modules/.bin/babel-node --presets es2015 node_modules/isparta/bin/isparta cover --report lcov --report html node_modules/mocha/bin/_mocha -- 'tests/**/*.js'",
+    "lib-test-watch": "BUILD_DEV=true npm run lib-test -w",
+    "react-build": "BUILD_TEST=true webpack --config webpack.renderer.react.prod.config.js --progress --colors",
+    "react-dev-server": "BUILD_DEV=true node server.js",
     "react-dev": "BUILD_DEV=true webpack-dev-server --config webpack.renderer.react.config.js --progress --colors --watch --content-base renderer-react",
     "react-lint": "eslint ./renderer-react/src",
-    "react-karma": "karma start --single-run --no-auto-watch karma.react.config.js",
-    "react-test": "mocha --opts ./renderer-react/tests/mocha.opts ./renderer-react/tests",
-    "react-test-coverage": "babel-node node_modules/isparta/bin/isparta cover --report text --report html node_modules/mocha/bin/_mocha -- --reporter dot ./renderer-react/tests/**/*.spec.js",
-    "react-test-watch": "npm run react-test -w"
+    "react-karma": "BUILD_DEV=true karma start --single-run --no-auto-watch karma.react.config.js",
+    "react-test": "BUILD_DEV=true mocha --opts ./renderer-react/tests/mocha.opts ./renderer-react/tests",
+    "react-test-coverage": "BUILD_DEV=true babel-node node_modules/isparta/bin/isparta cover --report text --report html node_modules/mocha/bin/_mocha -- --reporter dot ./renderer-react/tests/**/*.spec.js",
+    "react-test-watch": "BUILD_DEV=true mocha --opts ./renderer-react/tests/mocha.opts ./renderer-react/tests-w"
   },
   "keywords": [
-    "kucumber",
+    "vizalgo",
     "js",
     "react",
-    "cucumber"
+    "vizalgo",
+    "data",
+    "data visualisation",
+    "data viz",
+    "npm viz",
+    "es6 viz",
+    "visualzation",
+    "algorithms",
+    "geometry"
   ],
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/kiranml1/viz-algo"
   },
-  "author": "Amruthaluri Kiran Kumar",
+  "author": "Amruthaluri Kiran Kumar <kirankumar.amruthaluri@gmail.com>",
   "license": "MIT",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": ""
-    }
-  ],
   "devDependencies": {
     "babel-cli": "^6.9.0",
     "babel-core": "^6.9.0",
@@ -75,7 +79,7 @@
     "immutable": "^3.8.1",
     "isparta": "^4.0.0",
     "isparta-loader": "^2.0.0",
-    "istanbul": "^0.4.3",
+    "istanbul": "0.4.4",
     "istanbul-instrumenter-loader": "^0.2.0",
     "jasmine-core": "^2.4.1",
     "jsdom": "^9.2.1",
