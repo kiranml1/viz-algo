@@ -13,9 +13,17 @@
   "parser": "babel-eslint",
   "extends": "airbnb",
   "plugins": [
-    "react"
+    "babel",
+    "react",
+    "mocha"
   ],
+  "globals": {
+    "expect": true,
+    "__DEV__": true,
+    "__TEST__": true
+  },
   "rules": {
-    "no-underscore-dangle": [2, { "allowAfterThis": true }]
+    "no-underscore-dangle": 0,
+    "no-console": 0
   }
 }

@@ -4,8 +4,8 @@ lib/*
 **/node_modules/*
 *.config.js
 .idea/*
-doc/*
-renderer-react/doc/*
+docs/*
+renderer-react/docs/*
 renderer-react/build/*
 renderer-react/coverage/*
 coverage/*
