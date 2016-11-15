@@ -7,5 +7,5 @@ const VERSION = version;
 export {
   InsertionSort,
   LinearSearch,
-  VERSION
+  VERSION,
 };

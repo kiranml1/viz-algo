@@ -9,8 +9,8 @@ export default class InsertionSort extends Algorithm {
   }
 
   setOrders() {
-    this.orders.set('ASC','asc');
-    this.orders.set('DESC','desc');
+    this.orders.set('ASC', 'asc');
+    this.orders.set('DESC', 'desc');
   }
 
   set order(order) {
