@@ -1,13 +1,18 @@
-import chai from 'chai';
-import { VERSION } from './../../lib/vizalgo';
+import { expect } from 'chai';
+import { VERSION, InsertionSort, LinearSearch } from './../../src/index';
 import { version } from './../../package.json';
 
-const expect = chai.expect;
-
-describe('index module suite of webpack generated library', () => {
-
-  it('version test', () => {
+describe('wrapped package of entire library\'s \'index.js\' test suite ', () => {
+  it('should match version name from the package.json version', () => {
     expect(VERSION).to.equal(version);
+  });
+
+  it('expect Insertion sort algorithm must to be defined', () => {
+    expect(InsertionSort).to.be.ok;
+  });
+
+  it('expect Linear search algorithm must to be defined', () => {
+    expect(LinearSearch).to.be.ok;
   });
 
 });
