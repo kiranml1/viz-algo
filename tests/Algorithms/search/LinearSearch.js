@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { LinearSearch } from './../../src/index';
+import LinearSearch from '../../../src/Algorithms/search/LinearSearch';
 
 describe('linear search algorithm\'s test suite', () => {
   let linearSearch;

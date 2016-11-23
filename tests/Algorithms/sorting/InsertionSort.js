@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { InsertionSort } from './../../src/index';
+import InsertionSort from '../../../src/Algorithms/sorting/InsertionSort';
 
 describe('insertion sort algorithm\'s test suite', () => {
 
