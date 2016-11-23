@@ -1,5 +1,5 @@
-import InsertionSort from './Algorithms/InsertionSort';
-import LinearSearch from './Algorithms/LinearSearch';
+import InsertionSort from './Algorithms/sorting/InsertionSort';
+import LinearSearch from './Algorithms/search/LinearSearch';
 import { version } from './../package.json';
 
 /**

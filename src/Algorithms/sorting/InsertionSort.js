@@ -1,5 +1,5 @@
-import Algorithm from '../Abstractions/Algorithm';
-import ORDER from '../register/seqOrderEnum';
+import Algorithm from '../../Abstractions/Algorithm';
+import ORDER from '../../register/seqOrderEnum';
 
 /**
  * Insertion sort algorithm implementation - sorts a collection/array values into sorted sequence
