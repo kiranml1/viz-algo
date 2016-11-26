@@ -7,6 +7,14 @@ import ORDER from '../../Register/seqOrderEnum';
  */
 export default class MergeSort extends Algorithm {
 
+  /**
+   * Sub-implementation method of Merge sort to divide and conquer strategy with
+   * recursion to generate the sorted result with defined limits and order
+   * @param {Array} left - Collection of left subset from provided sliced input collection
+   * @param {Array} right - Collection of right subset from provided sliced input collection
+   * @param {string} order - Order for the sorting options - ascending or descending
+   * @returns {Array}
+   */
   merge(left, right, order) {
     const result = [];
 
