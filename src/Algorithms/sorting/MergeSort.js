@@ -14,6 +14,7 @@ export default class MergeSort extends Algorithm {
    * @param {Array} right - Collection of right subset from provided sliced input collection
    * @param {string} order - Order for the sorting options - ascending or descending
    * @returns {Array}
+   * @private
    */
   merge(left, right, order) {
     const result = [];
