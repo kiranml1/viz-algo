@@ -23,5 +23,5 @@ script:
   - npm run react-karma
 #  - npm run react-test-coverage
 after_script:
-  - 'cat ./build/reports/coverage/report-lcov/lcov.info | ./node_modules/.bin/coveralls'
+  - 'cat ./coverage/lcov.info | ./node_modules/.bin/coveralls'
   - process.exit()
