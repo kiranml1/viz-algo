@@ -29,7 +29,7 @@ export default class BinarySearch extends Algorithm {
    * @param {number|string|boolean} value
    * @returns {boolean}
    */
-  execute(input, value) {
+  execute() {
 
   }
 

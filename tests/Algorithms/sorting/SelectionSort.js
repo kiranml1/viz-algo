@@ -1,8 +1,7 @@
 import { expect } from 'chai';
-import SelectionSort from '../../../src/Algorithms/sorting/selectionSort';
+import SelectionSort from '../../../src/Algorithms/sorting/SelectionSort';
 
 describe('selection sort algorithm\'s test suite', () => {
-
   let algorithmInstance;
 
   beforeEach(() => {

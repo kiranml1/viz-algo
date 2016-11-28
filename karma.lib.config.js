@@ -12,6 +12,8 @@ webpackLibConfig.eslint = {
 webpackLibConfig.module.preLoaders = [{
     // eslint configuration
     loader: 'eslint-loader',
+    // path for source folder
+    include: path.resolve('test/'),
     // Only run `.js` and `.jsx` files through Babel
     test: /\.jsx?$/
   }, {

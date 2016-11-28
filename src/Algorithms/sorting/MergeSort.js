@@ -54,7 +54,6 @@ export default class MergeSort extends Algorithm {
    * @returns {Array} Sorted collection of given order from input
    */
   execute(input, order) {
-
     if (input.length < 2) {
       return input;
     }
